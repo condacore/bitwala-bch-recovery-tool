@@ -18,10 +18,10 @@
 
 ### Donate
 *If you successfully received your BCH feel free to Donate:*
-**BTC:** 1KUx75cixop4vHDCxmvhsMaoaqedacQ2ri
-**BTH:** 1AUxCSRckMUARnnGeF6vHWyNzsFPh2YTra
-**ETH:** 0xc09cf3e5f54e0a3a83568b768257b21b97a0a00e
-**PP:** https://paypal.me/MariusBolik
+>**BTC:** 1KUx75cixop4vHDCxmvhsMaoaqedacQ2ri
+>**BTH:** 1AUxCSRckMUARnnGeF6vHWyNzsFPh2YTra
+>**ETH:** 0xc09cf3e5f54e0a3a83568b768257b21b97a0a00e
+>**PP:** https://paypal.me/MariusBolik
 
 ### License
 MIT - Copyright 2017 Marius Bolik - CONDACORE e.K.
