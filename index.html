@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bitwala BCH Recovery Tool</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.1/js/tether.min.js" integrity="sha256-t8H1IetnBzCpquxG+UZlk4QqNKSnViFk0Qt44ZXdn/E=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="jumbotron jumbotron-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-12">
+        <h1 class="h1">
+          Bitwala BCH Recovery Tool
+        </h1>
+        <h3 class="h3">
+          Get your Bitcoin Cash out of your Bitwala Wallet
+        </h3>
+        <span id="current-mode">We shall not be liable for lost Coins.</span> <a href="https://github.com/condacore/bitwala-bch-recovery-tool" target="_blank">Introductions &amp; Source Code.</a>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="container">
+    <form>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="well well-sm">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="passphrase-group" class="form-group">
+                  <label for="passphrase">Encrypted Wallet Password <small>- (Go to: https://my.bitwala.com/bitcoin/recovery)</small></label>
+                  <input class="form-control" type="password" id="passphrase" placeholder="064ead1168094ddaee6b07fb1a156c292c058dccd2a78f5bd8acf2b95d2fd259" required="required" />
+                </div>
+                <div class="form-group">
+                  <label id="boxa-label" for="boxa">User Key <small>- (This is your private key, encrypted with your wallet password)</small></label>
+                  <input type="text" class="form-control" id="boxa" required="required" placeholder="{&quot;iv&quot;:&quot;be+cK4F6D+Lv6sviJvZ/nA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:256,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;2/3fpLEzmws=&quot;,&quot;ct&quot;:&quot;rhoy6SztafTm9LXf4CMpKdKo9l55PE7GwPWe2k5xPFu..."/>
+                </div>
+                <div class="form-group">
+                  <label for="boxb">Backup Key <small>- (This is your backup private key, encrypted with your wallet password)</small></label>
+                  <input type="text" class="form-control" id="boxb" required="required" placeholder="{&quot;iv&quot;:&quot;m5IKhZctjFtJM6EihOorkA==&quot;,&quot;v&quot;:1,&quot;iter&quot;:10000,&quot;ks&quot;:256,&quot;ts&quot;:64,&quot;mode&quot;:&quot;ccm&quot;,&quot;adata&quot;:&quot;&quot;,&quot;cipher&quot;:&quot;aes&quot;,&quot;salt&quot;:&quot;cc4JTKIvlRE=&quot;,&quot;ct&quot;:&quot;AaTXDxNlwIN6eoDSSMZ1GPww8T1n7FYy2Gb9hXY..." />
+                </div>
+                <div class="form-group">
+                  <label for="boxc">Bitwala public key <small>- (This is the public half of the key that's managed by Bitwala)</small></label>
+                  <input type="text" class="form-control" id="boxc" placeholder="xpub2INtc7jVEAqRbcFdYFNXdWaxJizAoIQAnvUzqlPBJ5zXLcLD369QlHfRUeArqKZgkuRj4ABrwONAhawexkT" required="required" />
+                </div>
+                <div class="form-group">
+                  <label for="destinationAddress">Destination Address <small>- (Your BCH Wallet)</small></label>
+                  <input type="text" class="form-control" id="destinationAddress" placeholder="1AUxCSRckMUARnnGeF6vHWyNzsFPh2YTra" required="required" />
+                </div>
+              </div>
+              <div class="col-md-12">
+                <button type="button" class="btn btn-primary pull-right" id="btnStartRecovery">Get my BCH</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-md-12">
+        <form>
+          <div class="well well-sm">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="name">Message Console</label>
+                  <textarea name="console" id="console" disabled class="form-control" rows="9" cols="25" style="resize:vertical"></textarea>
+                </div>
+                <div id="sendSection" style="display:none;">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-9">
+                        <div class="form-group">
+                          <input type="text" class="form-control" id="message" placeholder="I agree to send..." />
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <button type="button" class="btn btn-primary pull-right" id="btnSendTransaction">Send Transaction</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript" src="./dist/index.js"></script>
+</html>
